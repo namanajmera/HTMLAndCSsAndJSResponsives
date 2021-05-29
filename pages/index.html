@@ -61,7 +61,7 @@
     </form>
     <script>
 
-        onst text = document.querySelector("#text");
+        const text = document.querySelector("#text");
         const textError = document.querySelector(".text-error");
         text.addEventListener("input", function() {
             const NAME_REGEX = RegExp("^[A-Z]{1}[a-z]{2,}$");
@@ -69,7 +69,7 @@
                 textError.textContent = "";
             } else textError.textContent = "Name is Incorrect";
         });
-
+        
         const salary = document.querySelector("#salary");
         const output = document.querySelector(".salary-output");
         output.textContent = salary.value;
