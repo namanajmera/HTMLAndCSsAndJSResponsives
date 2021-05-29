@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/sample_form_style.css">
 </head>
 
 <body>
@@ -14,18 +14,22 @@
             <h1>HTML 5 Form Input Fields</h1>
         </header>
         <div>
-            <label for="text">text input type for Name: </label>
-            <input type="text" id="text" name="text">
+            <label for="text">text input type for Name:<required>*</required> </label>
+            <input type="text" id="text" name="text" required>
+            <valid-message class="valid-text" for="text"></valid-message>
             <error-output class="text-error" for="text"></error-output>
+
         </div>
         <div>
-            <label for="pwd">password input type: </label>
+            <label for="pwd">password input type:<required>*</required> </label>
             <input type="password" id="pwd" name="pwd" required>
+            <valid-message class="valid-pwd" for="pwd"></valid-message>
             <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
-            <label for="email">email input type: </label>
-            <input type="email" id="email" name="email">
+            <label for="email">email input type:<required>*</required> </label>
+            <input type="email" id="email" name="email" required>
+            <valid-message class="valid-email" for="email"></valid-message>
             <error-output class="email-error" for="email"></error-output>
         </div>
         <div>
@@ -39,6 +43,7 @@
         <div>
             <label for="tel">tel input type: </label>
             <input type="tel" id="tel" name="tel">
+            <valid-message class="valid-tel" for="tel"></valid-message>
             <error-output class="tel-error" for="tel"></error-output>
         </div>
         <div>
@@ -48,7 +53,6 @@
         <div class="nativeDateTimePicker">
             <label for="startDate">Choose a date and time: </label>
             <input type="datetime-local" id="startDate" name="startDate">
-            <span class="validity"></span>
         </div>
         <div>
             <label for="salary">Choose your salary: </label>
@@ -60,43 +64,74 @@
         </div>
     </form>
     <script>
-
         const text = document.querySelector("#text");
         const textError = document.querySelector(".text-error");
+        const validText = document.querySelector(".valid-text");
         text.addEventListener("input", function() {
             const NAME_REGEX = RegExp("^[A-Z]{1}[a-z]{2,}$");
-            if (NAME_REGEX.test(text.value)) {
+            if (text.value.length == 0) {
                 textError.textContent = "";
-            } else textError.textContent = "Name is Incorrect";
+                validText.textContent = "";
+            } else if (NAME_REGEX.test(text.value)) {
+                textError.textContent = "";
+                validText.textContent = '✓';
+            } else {
+                textError.textContent = "Name is Incorrect!";
+                validText.textContent = "";
+            }
         });
 
         const email = document.querySelector("#email");
         const emailError = document.querySelector(".email-error");
+        const validEmail = document.querySelector(".valid-email");
         email.oninput = function() {
             const EMAIL_REGEX = RegExp("^[a-z0-9]+(([\\._+-][a-z0-9]+)?)\\@[a-z0-9]+\\.(([a-z]{2,4})(\\.[a-z]{2,4})?)$");
-            if (EMAIL_REGEX.test(email.value)) {
+            if (email.value.length == 0) {
                 emailError.textContent = "";
-            } else emailError.textContent = "Email is Incorrect";
+                validEmail.textContent = "";
+            } else if (EMAIL_REGEX.test(email.value)) {
+                emailError.textContent = "";
+                validEmail.textContent = '✓';
+            } else {
+                emailError.textContent = "Email is Incorrect!";
+                validEmail.textContent = "";
+            }
         };
 
         const telephone = document.querySelector("#tel");
         const telephoneError = document.querySelector(".tel-error");
+        const validTelephone = document.querySelector(".valid-tel");
         telephone.oninput = function() {
             const TELEPHONE_REGEX = RegExp("^[1-9]{1}[0-9]{1} [1-9]{1}[0-9]{9}$");
-            if (TELEPHONE_REGEX.test(telephone.value)) {
+            if (telephone.value.length == 0) {
                 telephoneError.textContent = "";
-            } else telephoneError.textContent = "Telephone is Incorrect";
+                validTelephone.textContent = "";
+            } else if (TELEPHONE_REGEX.test(telephone.value)) {
+                telephoneError.textContent = "";
+                validTelephone.textContent = '✓';
+            } else {
+                telephoneError.textContent = "Telephone is Incorrect!";
+                validTelephone.textContent = "";
+            }
         };
 
         const password = document.querySelector("#pwd");
         const passwordError = document.querySelector(".pwd-error");
+        const validPassword = document.querySelector(".valid-pwd");
         password.oninput = function() {
-            const PASSWORD_REGEX = RegExp("(.{8,})");
-            if (PASSWORD_REGEX.test(password.value)) {
+            const PASSWORD_REGEX = RegExp("(?=.*[A-Z])(?=.*\\d)(?=.*[a-z])(?=.*[\\@\\#\\$\\%\\^\\&\\*\\.])[a-zA-Z0-9\\@\\#\\$\\%\\^\\&\\*\\.]{8,}");
+            if (password.value.length == 0) {
                 passwordError.textContent = "";
-            } else passwordError.textContent = "Password is Incorrect";
+                validPassword.textContent = "";
+            } else if (PASSWORD_REGEX.test(password.value)) {
+                passwordError.textContent = "";
+                validPassword.textContent = '✓';
+            } else {
+                passwordError.textContent = "Password is Incorrect!";
+                validPassword.textContent = "";
+            }
         };
-        
+
         const salary = document.querySelector("#salary");
         const output = document.querySelector(".salary-output");
         output.textContent = salary.value;
@@ -107,4 +142,4 @@
 
 </body>
 
-</html> 
+</html>
