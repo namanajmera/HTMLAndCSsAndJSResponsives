@@ -69,6 +69,15 @@
                 textError.textContent = "";
             } else textError.textContent = "Name is Incorrect";
         });
+
+        const email = document.querySelector("#email");
+        const emailError = document.querySelector(".email-error");
+        email.oninput = function() {
+            const EMAIL_REGEX = RegExp("^[a-z0-9]+(([\\._+-][a-z0-9]+)?)\\@[a-z0-9]+\\.(([a-z]{2,4})(\\.[a-z]{2,4})?)$");
+            if (EMAIL_REGEX.test(email.value)) {
+                emailError.textContent = "";
+            } else emailError.textContent = "Email is Incorrect";
+        };
         
         const salary = document.querySelector("#salary");
         const output = document.querySelector(".salary-output");
