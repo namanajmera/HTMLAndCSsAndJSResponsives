@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/sample_form_style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -67,7 +67,7 @@
         const text = document.querySelector("#text");
         const textError = document.querySelector(".text-error");
         const validText = document.querySelector(".valid-text");
-        text.addEventListener("input", function() {
+        text.addEventListener("input", function () {
             const NAME_REGEX = RegExp("^[A-Z]{1}[a-z]{2,}$");
             if (text.value.length == 0) {
                 textError.textContent = "";
@@ -84,7 +84,7 @@
         const email = document.querySelector("#email");
         const emailError = document.querySelector(".email-error");
         const validEmail = document.querySelector(".valid-email");
-        email.oninput = function() {
+        email.oninput = function () {
             const EMAIL_REGEX = RegExp("^[a-z0-9]+(([\\._+-][a-z0-9]+)?)\\@[a-z0-9]+\\.(([a-z]{2,4})(\\.[a-z]{2,4})?)$");
             if (email.value.length == 0) {
                 emailError.textContent = "";
@@ -101,7 +101,7 @@
         const telephone = document.querySelector("#tel");
         const telephoneError = document.querySelector(".tel-error");
         const validTelephone = document.querySelector(".valid-tel");
-        telephone.oninput = function() {
+        telephone.oninput = function () {
             const TELEPHONE_REGEX = RegExp("^[1-9]{1}[0-9]{1} [1-9]{1}[0-9]{9}$");
             if (telephone.value.length == 0) {
                 telephoneError.textContent = "";
@@ -118,7 +118,7 @@
         const password = document.querySelector("#pwd");
         const passwordError = document.querySelector(".pwd-error");
         const validPassword = document.querySelector(".valid-pwd");
-        password.oninput = function() {
+        password.oninput = function () {
             const PASSWORD_REGEX = RegExp("(?=.*[A-Z])(?=.*\\d)(?=.*[a-z])(?=.*[\\@\\#\\$\\%\\^\\&\\*\\.])[a-zA-Z0-9\\@\\#\\$\\%\\^\\&\\*\\.]{8,}");
             if (password.value.length == 0) {
                 passwordError.textContent = "";
@@ -135,7 +135,7 @@
         const salary = document.querySelector("#salary");
         const output = document.querySelector(".salary-output");
         output.textContent = salary.value;
-        salary.addEventListener("input", function() {
+        salary.addEventListener("input", function () {
             output.textContent = salary.value;
         });
     </script>
