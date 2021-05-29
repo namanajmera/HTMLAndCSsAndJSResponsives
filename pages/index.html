@@ -78,6 +78,15 @@
                 emailError.textContent = "";
             } else emailError.textContent = "Email is Incorrect";
         };
+
+        const telephone = document.querySelector("#tel");
+        const telephoneError = document.querySelector(".tel-error");
+        telephone.oninput = function() {
+            const TELEPHONE_REGEX = RegExp("^[1-9]{1}[0-9]{1} [1-9]{1}[0-9]{9}$");
+            if (TELEPHONE_REGEX.test(telephone.value)) {
+                telephoneError.textContent = "";
+            } else telephoneError.textContent = "Telephone is Incorrect";
+        };
         
         const salary = document.querySelector("#salary");
         const output = document.querySelector(".salary-output");
